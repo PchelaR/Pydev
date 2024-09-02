@@ -1,0 +1,19 @@
+{% load static %}
+
+<div class="container-md px-4 py-4" style="height: 600px; overflow: hidden;">
+    <div class="row d-flex justify-content-center align-items-center text-center h-100">
+        <div class="col-md-8">
+            <img class="d-block mx-auto mb-4" src="{% static 'svg/Python_logo.svg' %}" alt="" width="64" height="64">
+            <h1 class="display-5 fw-bold text-body-emphasis">Добро пожаловать в PYDEV</h1>
+            <p class="lead mb-4">
+                Наша платформа предлагает обширную информацию по программированию на Python, включая Django, DRF,
+                Docker, Nginx, SQL и другие технологии. Здесь вы найдете материалы как по бэкенду, так и по фронтенду,
+                обеспечивая всестороннее понимание всех ключевых аспектов разработки
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a class="btn-custom" href="{% url 'database' %}">Начать обучение</a>
+                <a class="btn-custom-outline-secondary" href="{% url 'about' %}">Узнать больше</a>
+            </div>
+        </div>
+    </div>
+</div>

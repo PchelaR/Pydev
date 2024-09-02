@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}PYDEV - Дополнительно{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-body-emphasis mb-3">Полезные ресурсы</h1>
+            <p class="fs-5 mb-4 text-secondary">
+                Здесь собраны дополнительные ресурсы, которые могут быть полезны для вашего обучения и развития в
+                области программирования на Python.
+            </p>
+            <div>
+                {% for resource in resources %}
+                    <div class="mb-3 d-flex">
+                        <p class="badge text-bg-dark rounded-pill me-2">{{ resource.get_category_display }}</p>
+                        <a class="custom-link d-block" href="{{ resource.url }}">{{ resource.title }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

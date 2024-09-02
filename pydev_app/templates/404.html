@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Страница не найдена{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5 text-center">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div>
+            <h1 class="display-1 fw-bold">404</h1>
+            <p class="fs-3 mb-4">Извините, страница, которую вы ищете, не существует.</p>
+            <a href="{% url 'homepage' %}" class="btn-custom">Вернуться на главную</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

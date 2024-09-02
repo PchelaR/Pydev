@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}PYDEV - База вопросов{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-body-emphasis mb-3">База вопросов</h1>
+            <p class="fs-5 mb-4 text-secondary">
+                Изучайте нужные вам технологии. Развивайте навыки.
+            </p>
+            <ul class="list-unstyled">
+                {% for category in categories %}
+                <li class="mb-4">
+                    <h2 class="fw-bold mb-2">{{ category.get_name_display }}</h2>
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        {% for topic in category.topics.all %}
+                        <div class="col">
+                            <a href="{% url 'detail_topic' topic.slug %}" class="btn-custom-outline-secondary d-block p-3">
+                                {{ topic.name }}
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

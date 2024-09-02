@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}PYDEV - Регистрация{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 custom-border rounded-3 p-4">
+            <h1 class="fw-bold mb-4">Регистрация</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn-custom w-100 py-2 mt-3" type="submit">Регистрация</button>
+            </form>
+            <p class="mt-2 text-body-secondary text-center">Уже есть аккаунт?
+                <a class="custom-link" href="{% url 'users:login' %}">Войти</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

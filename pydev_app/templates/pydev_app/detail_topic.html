@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}PYDEV - {{ topic.name }}{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-body-emphasis mb-3">{{ topic.name }}</h1>
+            <p class="fs-5 mb-4 text-secondary">
+                {{ topic.description }}
+            </p>
+            <div>
+                {% for module in topic.modules.all %}
+                    <div class="mb-4">
+                        <p class="fw-bold fs-5">{{ module.name }}</p>
+                        <ul class="list-unstyled ps-4">
+                            {% for lesson in module.lessons.all %}
+                                <li class="mb-2">
+                                    <i class="bi bi-arrow-right-short"></i>
+                                    <a href="{% url 'detail_lesson' lesson.slug %}" class="custom-link">
+                                        {{ lesson.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="{% url 'database' %}" class="btn-custom-outline-secondary">
+                Назад
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

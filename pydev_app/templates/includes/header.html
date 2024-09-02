@@ -1,0 +1,78 @@
+{% load static %}
+
+<header class="container-fluid custom-border-bottom fixed-top bg-white">
+    <div class="container">
+        <div class="py-3">
+            <div class="row align-items-center">
+                <div class="col-auto d-flex align-items-center">
+                    <a href="{% url 'homepage' %}" class="d-flex align-items-center mb-lg-0 text-decoration-none">
+                        <img src="{% static 'svg/Pydev_logo.svg' %}" alt="Pydev logo">
+                    </a>
+                </div>
+
+                <div class="col-auto d-lg-none ms-auto">
+                    <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+
+                <div class="col d-flex justify-content-center d-none d-lg-flex flex-nowrap">
+                    <nav>
+                        <ul class="nav mb-0 flex-nowrap">
+                            <li class="nav-item">
+                                <a href="{% url 'database' %}" class="nav-link px-3 text-body" style="white-space: nowrap;">База вопросов</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'resources' %}" class="nav-link px-3 text-body" style="white-space: nowrap;">Дополнительно</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'about' %}" class="nav-link px-3 text-body" style="white-space: nowrap;">О нас</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'endpoints' %}" class="nav-link px-3 text-body" style="white-space: nowrap;">API</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-auto d-flex align-items-center d-none d-lg-flex">
+                    {% if user.is_authenticated %}
+                        <span class="me-3">Привет, {{ user.username }}!</span>
+                        <form action="{% url 'users:logout' %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-custom-outline-secondary">Выйти</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'users:register' %}" class="btn-custom-outline-secondary me-3">Регистрация</a>
+                        <a href="{% url 'users:login' %}" class="btn-custom">Войти</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            {% if user.is_authenticated %}
+                <h3 class="d-block mb-2 fw-bold">Привет, {{ user.username }}!</h3>
+                <div class="border-bottom mb-3" style="border-bottom: 1px solid #000;"></div>
+            {% endif %}
+            <a href="{% url 'database' %}" class="nav-link d-block py-2" style="white-space: nowrap;">База вопросов</a>
+            <a href="{% url 'resources' %}" class="nav-link d-block py-2" style="white-space: nowrap;">Дополнительно</a>
+            <a href="{% url 'about' %}" class="nav-link d-block py-2" style="white-space: nowrap;">О нас</a>
+            <a href="{% url 'endpoints' %}" class="nav-link d-block py-2" style="white-space: nowrap;">API</a>
+            {% if user.is_authenticated %}
+                <form action="{% url 'users:logout' %}" method="post" class="mt-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-custom w-100">Выйти</button>
+                </form>
+            {% else %}
+                <a href="{% url 'users:register' %}" class="btn-custom-outline-secondary w-100 mt-3 mb-2">Регистрация</a>
+                <a href="{% url 'users:login' %}" class="btn-custom w-100">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

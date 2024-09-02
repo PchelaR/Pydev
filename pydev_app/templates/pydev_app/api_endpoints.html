@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}PYDEV - API Documentation{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-body-emphasis mb-3">API Endpoints</h1>
+            <p class="fs-5 mb-4 text-secondary">
+                Здесь вы найдете описание всех доступных API эндпоинтов, которые можно использовать для взаимодействия с
+                платформой PYDEV. Вы можете зарегистрировать новых пользователей, просматривать список уроков и
+                выполнять аутентификацию через JWT.
+            </p>
+            <div>
+                <!-- API Registration Endpoint -->
+                <h2 class="h4 fw-bold text-body-emphasis">Регистрация пользователя</h2>
+                <p><strong>URL:</strong> <code>/api/register/</code></p>
+                <p><strong>Метод:</strong> POST</p>
+                <p><strong>Описание:</strong> Этот эндпоинт позволяет зарегистрировать нового пользователя на платформе.
+                </p>
+                <p><strong>Тело запроса:</strong></p>
+                <pre><code>{
+    "username": "string",
+    "email": "string",
+    "password": "string"
+}</code></pre>
+                <p><strong>Пример ответа:</strong></p>
+                <pre><code>{
+    "id": 1,
+    "username": "string",
+    "email": "string"
+}</code></pre>
+                <hr>
+
+                <!-- API Lessons Endpoint -->
+                <h2 class="h4 fw-bold text-body-emphasis">Получение списка уроков</h2>
+                <p><strong>URL:</strong> <code>/api/lessons/</code></p>
+                <p><strong>Метод:</strong> GET</p>
+                <p><strong>Описание:</strong> Возвращает список всех доступных уроков.</p>
+                <p><strong>Пример ответа:</strong></p>
+                <pre><code>[
+    {
+        "id": 1,
+        "name": "string",
+        "description": "string (может содержать HTML)",
+        "module": "integer"
+    },
+    ...
+]</code></pre>
+                <hr>
+
+                <!-- API JWT Authentication Endpoint -->
+                <h2 class="h4 fw-bold text-body-emphasis">Аутентификация через JWT</h2>
+                <p><strong>URL:</strong> <code>/api/token/</code></p>
+                <p><strong>Метод:</strong> POST</p>
+                <p><strong>Описание:</strong> Этот эндпоинт используется для получения JWT токена для аутентификации.
+                </p>
+                <p><strong>Тело запроса:</strong></p>
+                <pre><code>{
+    "username": "string",
+    "password": "string"
+}</code></pre>
+                <p><strong>Пример ответа:</strong></p>
+                <pre><code>{
+    "refresh": "string",
+    "access": "string"
+}</code></pre>
+                <hr>
+
+                <!-- API JWT Token Refresh Endpoint -->
+                <h2 class="h4 fw-bold text-body-emphasis">Обновление JWT токена</h2>
+                <p><strong>URL:</strong> <code>/api/token/refresh/</code></p>
+                <p><strong>Метод:</strong> POST</p>
+                <p><strong>Описание:</strong> Этот эндпоинт используется для обновления access-токена по refresh-токену.
+                </p>
+                <p><strong>Тело запроса:</strong></p>
+                <pre><code>{
+    "refresh": "string"
+}</code></pre>
+                <p><strong>Пример ответа:</strong></p>
+                <pre><code>{
+    "access": "string"
+}</code></pre>
+                <hr>
+
+                <p class="fs-5 mb-4 text-secondary">
+                    Для работы с этими эндпоинтами вам потребуется отправлять запросы с помощью HTTP клиента,
+                    например Postman, или через фронтенд вашего приложения. Убедитесь, что вы отправляете JWT токен
+                    в заголовке Authorization для защищенных эндпоинтов.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

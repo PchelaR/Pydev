@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}PYDEV - {{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-body-emphasis mb-3">{{ category.get_name_display }}</h1>
+            <div class="custom-ul custom-ol mb-4">
+                {{ category.description }}
+            </div>
+
+            <div class="row">
+                {% for topic in topics %}
+                    <div class="col-md-4 mb-4">
+                        <div class="col">
+                            <a href="{% url 'detail_topic' topic.slug %}" class="btn-custom-outline-secondary d-block p-3">
+                                {{ topic.name }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <a href="{% url 'homepage' %}" class="btn-custom-outline-secondary mt-3">Назад</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

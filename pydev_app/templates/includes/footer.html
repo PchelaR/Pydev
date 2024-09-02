@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="container">
+    <footer class="d-flex flex-wrap py-3 custom-border-top align-items-center">
+        <a href="{% url 'homepage' %}"
+           class="d-inline-flex align-items-center mb-3 mb-lg-0 text-center text-lg-start me-lg-auto link-body-emphasis text-decoration-none">
+            <img src="{% static 'svg/Python_logo.svg' %}" alt="Pydev logo" width="38" height="38">
+        </a>
+
+        <ul class="nav col-12 col-lg-8 justify-content-end mb-0 d-none d-lg-flex">
+            <li class="nav-item"><a href="{% url 'database' %}" class="nav-link px-3 text-body">База вопросов</a></li>
+            <li class="nav-item"><a href="{% url 'resources' %}" class="nav-link px-3 text-body">Дополнительно</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link px-3 text-body">О нас</a></li>
+            <li class="nav-item"><a href="{% url 'endpoints' %}" class="nav-link px-3 text-body">API Endpoints</a></li>
+        </ul>
+    </footer>
+</div>

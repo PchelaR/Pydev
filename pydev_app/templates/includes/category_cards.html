@@ -1,0 +1,23 @@
+<div class="container-md px-4 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-body-emphasis mb-3">Важные темы</h1>
+            <p class="fs-5 mb-4 text-secondary">
+                Узнайте о ключевых аспектах программирования
+            </p>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% for category in categories %}
+                <div class="col">
+                    <div class="custom-card bg-light">
+                        <div class="card-body">
+                            <h1 class="card-title fw-bold mb-4">{{ category.get_name_display }}</h1>
+                            <p class="card-text text-secondary">{{ category.description }}</p>
+                            <a href="{% url 'detail_category' category.slug %}" class="btn-custom w-100">Перейти к вопросам</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
